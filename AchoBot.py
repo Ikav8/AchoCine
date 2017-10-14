@@ -1,6 +1,10 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 import CineHandler
+import os
+
+# Telegram Token #
+telegram_token = [line.split() for line in open('keys')][0][0]
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -72,7 +76,13 @@ def error(bot, update, error):
 # main loop #
 def main():
     # Create the EventHandler and pass it your bot's token.
-    updater = Updater("459616053:AAG0UtnInc3m3SedR4PlFXLNizMnzoccaLU")
+    updater = Updater(telegram_token)
+    PORT = int(os.environ.get('PORT', '5000'))
+
+    updater.start_webhook(listen="0.0.0.0",
+                          port=PORT,
+                          url_path=telegram_token)
+    updater.bot.setWebhook("https://moodify-bot.herokuapp.com/" + telegram_token)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
@@ -93,7 +103,7 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    updater.start_polling()
+    #updater.start_polling()
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
