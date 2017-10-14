@@ -5,8 +5,8 @@ import CineHandler
 import os
 
 # Telegram Token #
-telegram_token = [line.split() for line in open('keys')][0][0]
-
+#telegram_token = [line.split() for line in open('keys')][0][0]
+telegram_token = os.environ.get('TELEGRAM_TOKEN')
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
