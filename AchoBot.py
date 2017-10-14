@@ -82,7 +82,7 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=telegram_token)
-    updater.bot.setWebhook("https://moodify-bot.herokuapp.com/" + telegram_token)
+    updater.bot.setWebhook("https://achocine.herokuapp.com/" + telegram_token)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
