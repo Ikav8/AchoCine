@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 import CineHandler
