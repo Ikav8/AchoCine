@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 
 """
 help - Help!
+pelicula - Informacion de una pelicula. Nombre de la pelicula entre comillas.
 espaciomediterraneo - Cartelera del cine del Espacio Mediterraneo
 mandarache - Cartelera del cine del Mandarache
 eltiro - Cartelera del cine de El Tiro
@@ -65,6 +66,11 @@ def thader(bot, update):
     url = "http://www.neocine.es/cine/9/thader--murcia-/lang/es"
     update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
 
+# /pelicula <title> #
+def pelicula(bot, update, args):
+    movie = args[0]
+    update.message.reply_text(CineHandler.getMovieInfo(movie))
+
 # random text received #
 def no_command(bot, update):
     update.message.reply_text("¡Utiliza /help para ver la lista de comandos!")
@@ -96,6 +102,7 @@ def main():
     dp.add_handler(CommandHandler("eltiro", eltiro))
     dp.add_handler(CommandHandler("condomina", condomina))
     dp.add_handler(CommandHandler("thader", thader))
+    dp.add_handler(CommandHandler("pelicula", thader, pass_args=True))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, no_command))

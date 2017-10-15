@@ -1,5 +1,19 @@
 import bs4
 import urllib3
+import imdbpie
+
+
+imdb = imdbpie.Imdb(anonymize=True)
+def getMovieInfo(movie_title):
+
+    movies = imdb.search_for_title(movie_title)
+    if(len(movies)<1):
+        return('Lo siento, no he encontrado esa película...')
+    else:
+        movie = imdb.get_title_by_id(movies[0]['imdb_id'])
+        movie_info = movie.title + " - imdb rating: " + str(movie.rating) + "\nReparto: " + str([x.name for x in movie.cast_summary]) + "\nSinopsis: " + movie.plot_outline
+        return(movie_info)
+
 
 def fromDictToString(cine, dict):
     info_str = cine + '\n _______________ \n\n'
