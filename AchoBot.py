@@ -33,39 +33,50 @@ def start(bot, update):
 
 # /help #
 def help(bot, update):
-    help_text = "Con este Bot podrás consultar la cartelera de los cines listados a continuación:\n\n/pelicula <nombre_pelicula> - Para ver la información de una pelicula \n/espaciomediterraneo - Cartelera del cine del Espacio Mediterraneo\n/mandarache - Cartelera del cine del Mandarache\n/eltiro - Cartelera del cine de El Tiro\n/condomina - Cartelera del cine de la Nueva Condomina\n/thader - Cartelera del cine del Thader\n\nSi deseas agregar un cine a la lista de contactos mandame un email:\n \
-        alex.ortiz.garcia@gmail.com\n\nEspero que te guste AchoBot! "
-    update.message.reply_text(help_text)
+    help_text = "Con este Bot podrás consultar la cartelera de los cines listados a continuación:\n\n*/pelicula <nombre_pelicula>* - Para ver la información de una pelicula \n*/espaciomediterraneo* - Cartelera del cine del Espacio Mediterraneo\n*/mandarache* - Cartelera del cine del Mandarache\n*/eltiro* - Cartelera del cine de El Tiro\n*/condomina* - Cartelera del cine de la Nueva Condomina\n*/thader* - Cartelera del cine del Thader\n\nSi deseas agregar un cine a la lista de contactos mandame un email:\n \
+        alex.ortiz.garcia@gmail.com\n\nO escríbeme: \n@Ikav8\n\nEspero que te guste AchoBot! "
+    bot.send_message(chat_id=update.message.chat_id, text=help_text,
+                     parse_mode=ParseMode.MARKDOWN)
 
 # /espaciomediterraneo #
 def espaciomediterraneo(bot, update):
     cine = "Espacio Mediterraneo:"
     url = "http://www.neocine.es/cine/4/espacio-mediterraneo--cartagena-/lang/es"
-    update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine,url))
+
+    bot.send_message(chat_id= update.message.chat_id, text= CineHandler.getMoviesFromNeocineWebsite(cine,url), parse_mode=ParseMode.MARKDOWN)
+    #update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine,url))
 
 # /mandarache #
 def mandarache(bot, update):
     cine = "Mandarache:"
     url = "http://www.neocine.es/cine/6/mandarache--cartagena-/lang/es"
-    update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
+    bot.send_message(chat_id=update.message.chat_id, text=CineHandler.getMoviesFromNeocineWebsite(cine, url),
+                     parse_mode=ParseMode.MARKDOWN)
+    #update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
 
 # /eltiro #
 def eltiro(bot, update):
     cine = "El Tiro:"
     url = "http://www.neocine.es/cine/5/hd-digital-el-tiro--murcia-/lang/es"
-    update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
+    bot.send_message(chat_id=update.message.chat_id, text=CineHandler.getMoviesFromNeocineWebsite(cine, url),
+                     parse_mode=ParseMode.MARKDOWN)
+    #update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
 
 # /condomina #
 def condomina(bot, update):
     cine = "Nueva Condomina:"
     url = "http://www.cinerama.es/cartelera/cine/nueva-condomina/"
-    update.message.reply_text(CineHandler.getMoviesFromCineramaWebsite(cine, url))
+    bot.send_message(chat_id=update.message.chat_id, text=CineHandler.getMoviesFromNeocineWebsite(cine, url),
+                     parse_mode=ParseMode.MARKDOWN)
+    #update.message.reply_text(CineHandler.getMoviesFromCineramaWebsite(cine, url))
 
 # /thader #
 def thader(bot, update):
     cine = "Thader:"
     url = "http://www.neocine.es/cine/9/thader--murcia-/lang/es"
-    update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
+    bot.send_message(chat_id=update.message.chat_id, text=CineHandler.getMoviesFromNeocineWebsite(cine, url),
+                     parse_mode=ParseMode.MARKDOWN)
+    #update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
 
 # /pelicula <title> #
 def pelicula(bot, update, args):

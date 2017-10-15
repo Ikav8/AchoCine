@@ -16,9 +16,9 @@ def getMovieInfo(movie_title):
 
 
 def fromDictToString(cine, dict):
-    info_str = cine + '\n _______________ \n\n'
+    info_str = "*"+cine + '*\n _______________ \n\n'
     for key, value in dict.items():
-        info_str = info_str + key + '\n' + str(value) + '\n - - - - - - \n'
+        info_str = info_str + "*"+key + '*\n' + str(value) + '\n - - - - - - \n'
     return info_str
 
 
