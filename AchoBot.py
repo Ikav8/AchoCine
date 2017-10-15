@@ -32,7 +32,7 @@ def start(bot, update):
 
 # /help #
 def help(bot, update):
-    help_text = "Con este Bot podrás consultar la cartelera de los cines listados a continuación:\n\n/espaciomediterraneo - Cartelera del cine del Espacio Mediterraneo\n/mandarache - Cartelera del cine del Mandarache\n/eltiro - Cartelera del cine de El Tiro\n/condomina - Cartelera del cine de la Nueva Condomina\n/thader - Cartelera del cine del Thader\n\nSi deseas agregar un cine a la lista de contactos mandame un email:\n \
+    help_text = "Con este Bot podrás consultar la cartelera de los cines listados a continuación:\n\n/pelicula <nombre_pelicula> - Para ver la información de una pelicula \n/espaciomediterraneo - Cartelera del cine del Espacio Mediterraneo\n/mandarache - Cartelera del cine del Mandarache\n/eltiro - Cartelera del cine de El Tiro\n/condomina - Cartelera del cine de la Nueva Condomina\n/thader - Cartelera del cine del Thader\n\nSi deseas agregar un cine a la lista de contactos mandame un email:\n \
         alex.ortiz.garcia@gmail.com\n\nEspero que te guste AchoBot! "
     update.message.reply_text(help_text)
 
@@ -68,7 +68,9 @@ def thader(bot, update):
 
 # /pelicula <title> #
 def pelicula(bot, update, args):
-    movie = args[0]
+    movie = ''
+    for arg in args:
+        movie = movie + " " + arg
     update.message.reply_text(CineHandler.getMovieInfo(movie))
 
 # random text received #
