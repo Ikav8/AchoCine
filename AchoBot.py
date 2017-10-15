@@ -72,7 +72,7 @@ def pelicula(bot, update, args):
     movie = ''
     for arg in args:
         movie = movie + " " + arg
-    bot.send_message(chat_id= update.message.chat_id, text= CineHandler.getMovieInfo(movie), parse_mode=ParseMode.Markdown)
+    bot.send_message(chat_id= update.message.chat_id, text= CineHandler.getMovieInfo(movie), parse_mode=ParseMode.MARKDOWN)
     #update.message.reply_text(CineHandler.getMovieInfo(movie))
 
 # random text received #
