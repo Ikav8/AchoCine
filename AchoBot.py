@@ -43,44 +43,38 @@ def espaciomediterraneo(bot, update):
     cine = "Espacio Mediterraneo:"
     url = "http://www.neocine.es/cine/4/espacio-mediterraneo--cartagena-/lang/es"
 
-    bot.send_message(chat_id= update.message.chat_id, text= CineHandler.getMoviesFromNeocineWebsite(cine,url), parse_mode=ParseMode.MARKDOWN)
-    #update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine,url))
+    update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine,url))
 
 # /mandarache #
 def mandarache(bot, update):
     cine = "Mandarache:"
     url = "http://www.neocine.es/cine/6/mandarache--cartagena-/lang/es"
-    bot.send_message(chat_id=update.message.chat_id, text=CineHandler.getMoviesFromNeocineWebsite(cine, url),
-                     parse_mode=ParseMode.MARKDOWN)
-    #update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
+    update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
 
 # /eltiro #
 def eltiro(bot, update):
     cine = "El Tiro:"
     url = "http://www.neocine.es/cine/5/hd-digital-el-tiro--murcia-/lang/es"
-    bot.send_message(chat_id=update.message.chat_id, text=CineHandler.getMoviesFromNeocineWebsite(cine, url),
-                     parse_mode=ParseMode.MARKDOWN)
-    #update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
+    update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
 
 # /condomina #
 def condomina(bot, update):
     cine = "Nueva Condomina:"
     url = "http://www.cinerama.es/cartelera/cine/nueva-condomina/"
-    bot.send_message(chat_id=update.message.chat_id, text=CineHandler.getMoviesFromNeocineWebsite(cine, url),
-                     parse_mode=ParseMode.MARKDOWN)
-    #update.message.reply_text(CineHandler.getMoviesFromCineramaWebsite(cine, url))
+    update.message.reply_text(CineHandler.getMoviesFromCineramaWebsite(cine, url))
 
 # /thader #
 def thader(bot, update):
     cine = "Thader:"
     url = "http://www.neocine.es/cine/9/thader--murcia-/lang/es"
-    bot.send_message(chat_id=update.message.chat_id, text=CineHandler.getMoviesFromNeocineWebsite(cine, url),
-                     parse_mode=ParseMode.MARKDOWN)
-    #update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
+    update.message.reply_text(CineHandler.getMoviesFromNeocineWebsite(cine, url))
 
 # /pelicula <title> #
 def pelicula(bot, update, args):
     movie = ''
+    if len(args) < 1:
+        update.message.reply_text("Escribe el nombre de la pelicula!")
+
     for arg in args:
         movie = movie + " " + arg
     bot.send_message(chat_id= update.message.chat_id, text= CineHandler.getMovieInfo(movie), parse_mode=ParseMode.MARKDOWN)
