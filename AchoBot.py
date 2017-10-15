@@ -102,7 +102,7 @@ def main():
     dp.add_handler(CommandHandler("eltiro", eltiro))
     dp.add_handler(CommandHandler("condomina", condomina))
     dp.add_handler(CommandHandler("thader", thader))
-    dp.add_handler(CommandHandler("pelicula", thader, pass_args=True))
+    dp.add_handler(CommandHandler("pelicula", pelicula, pass_args=True))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, no_command))
