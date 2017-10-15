@@ -11,7 +11,7 @@ def getMovieInfo(movie_title):
         return('Lo siento, no he encontrado esa película...')
     else:
         movie = imdb.get_title_by_id(movies[0]['imdb_id'])
-        movie_info = movie.title + " - imdb rating: " + str(movie.rating) + "\nReparto: " + str([x.name for x in movie.cast_summary]) + "\nSinopsis: " + movie.plot_outline
+        movie_info = "*"+movie.title + " - imdb rating: " + str(movie.rating) + "\nReparto:* " + str([x.name for x in movie.cast_summary]) + "\n*Sinopsis:* " + movie.plot_outline
         return(movie_info)
 
 

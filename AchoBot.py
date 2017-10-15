@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from telegram import ParseMode
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
 import CineHandler
@@ -15,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 """
 help - Help!
-pelicula - Informacion de una pelicula. Nombre de la pelicula entre comillas.
+pelicula - Informacion de una pelicula. Nombre de la pelicula en INGLÉS.
 espaciomediterraneo - Cartelera del cine del Espacio Mediterraneo
 mandarache - Cartelera del cine del Mandarache
 eltiro - Cartelera del cine de El Tiro
@@ -71,7 +72,8 @@ def pelicula(bot, update, args):
     movie = ''
     for arg in args:
         movie = movie + " " + arg
-    update.message.reply_text(CineHandler.getMovieInfo(movie))
+    bot.send_message(chat_id= update.message.chat_id, text= CineHandler.getMovieInfo(movie), parse_mode=ParseMode.Markdown)
+    #update.message.reply_text(CineHandler.getMovieInfo(movie))
 
 # random text received #
 def no_command(bot, update):
